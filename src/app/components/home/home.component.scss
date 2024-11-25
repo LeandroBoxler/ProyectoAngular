@@ -1,0 +1,60 @@
+select,
+input {
+  border-radius: 5px;
+  padding-block: 0.25em;
+  font-family: "Poppins", serif;
+  padding-inline: 0.25em;
+  outline: none;
+}
+
+main {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#filter {
+  height: 100svh;
+  display: flex;
+  flex-flow: column;
+  padding: 1em;
+  background-color: #212121;
+}
+
+#filter p {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  color: white;
+}
+
+#champs {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1em;
+  padding: 1em;
+}
+
+#champs div:hover img{
+    height: 11em;
+    transition: height 250ms ease-in-out;
+}
+
+#champs div {
+    position: relative;
+    cursor: pointer;
+    height: fit-content;
+}
+
+#champs div img {
+  height: 10em;
+}
+
+#champs div span {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: white;
+  padding: 0.5em;
+  font-size: 1.5em;
+  font-family: "Poppins", serif;
+  font-weight: 600;
+}
