@@ -1,20 +1,20 @@
 header {
-    padding-inline: 1em;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #212121;
-  }
-  
-  header input {
-    width: 20em;
-  }
-  
-  header img {
-    height: 4em;
-  }
-  select,
+  padding-inline: 1em;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #212121;
+}
+
+header input {
+  width: 20em;
+}
+
+header img {
+  height: 4em;
+}
+select,
 input {
   border-radius: 5px;
   padding-block: 0.25em;

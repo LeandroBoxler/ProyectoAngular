@@ -33,15 +33,15 @@ main {
   padding: 1em;
 }
 
-#champs div:hover img{
-    height: 11em;
-    transition: height 250ms ease-in-out;
+#champs div:hover img {
+  height: 11em;
+  transition: height 250ms ease-in-out;
 }
 
 #champs div {
-    position: relative;
-    cursor: pointer;
-    height: fit-content;
+  position: relative;
+  cursor: pointer;
+  height: fit-content;
 }
 
 #champs div img {
