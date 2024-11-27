@@ -12,10 +12,10 @@
     <div id="champs" *ngFor="let champ of champs; let i = index">
       <div>
         <img
-        src="https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/AurelionSol.png"
+        src="https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/{{champ.id}}.png"
         alt=""
         />
-        <span>{{ namesChamps[i] }}</span>
+        <span>{{ champ.id }}</span>
       </div>
     </div>
   </div>

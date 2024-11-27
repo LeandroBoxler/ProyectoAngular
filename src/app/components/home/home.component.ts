@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   
   
   champs: DataChamp[] = new Array();
-  namesChamps:string[]=[]
 
   
   champsAll = inject(ChampsService);
@@ -22,13 +21,6 @@ export class HomeComponent implements OnInit {
     this.champsAll.loadChamps().subscribe({
       next: (res: any) => {
         this.champs = Object.values(res['data']);
-        
-  this.champs.forEach(e => {
-    this.namesChamps.push(e.name.replace(/'/g, ''))
-  });
-  console.log(this.namesChamps);
-  
-
         
       },
       error: (err) => {
