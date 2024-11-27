@@ -3,17 +3,19 @@
     <p>Ordenar por</p>
     <select name="" id="">
       <option value="">Nombre</option>
-      <option value="">Región</option>
+      <option value="">Mana</option>
+      <option value="">Energia</option>
+
     </select>
   </div>
   <div id="content">
     <div id="champs" *ngFor="let champ of champs; let i = index">
       <div>
         <img
-          src="https://raw.communitydragon.org/latest/game/assets/characters/aatrox/hud/aatrox_square.png"
-          alt=""
+        src="https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/AurelionSol.png"
+        alt=""
         />
-        <span>{{ champ.name }}</span>
+        <span>{{ namesChamps[i] }}</span>
       </div>
     </div>
   </div>

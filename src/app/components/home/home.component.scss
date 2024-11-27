@@ -1,3 +1,4 @@
+
 select,
 input {
   border-radius: 5px;
@@ -11,7 +12,11 @@ main {
   display: flex;
   flex-flow: row nowrap;
 }
-
+#content{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
 #filter {
   height: 100svh;
   display: flex;
@@ -28,6 +33,7 @@ main {
 
 #champs {
   display: flex;
+  flex-wrap: wrap;
   flex-flow: row wrap;
   gap: 1em;
   padding: 1em;

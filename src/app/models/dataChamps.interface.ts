@@ -4,4 +4,5 @@ export interface DataChamp {
   key: string;
   name: string;
   title: string;
+  image:{[key:string]:any};
 }

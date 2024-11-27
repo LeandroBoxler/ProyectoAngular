@@ -9,13 +9,27 @@ import { inject } from '@angular/core';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  champs: DataChamp[] = new Array();
-  champsAll = inject(ChampsService);
 
+  
+  
+  champs: DataChamp[] = new Array();
+  namesChamps:string[]=[]
+
+  
+  champsAll = inject(ChampsService);
+  
   ngOnInit(): void {
     this.champsAll.loadChamps().subscribe({
       next: (res: any) => {
         this.champs = Object.values(res['data']);
+        
+  this.champs.forEach(e => {
+    this.namesChamps.push(e.name.replace(/'/g, ''))
+  });
+  console.log(this.namesChamps);
+  
+
+        
       },
       error: (err) => {
         console.error('Error al cargar los campeones:', err);
@@ -25,4 +39,7 @@ export class HomeComponent implements OnInit {
       },
     });
   }
+
+  
+
 }
