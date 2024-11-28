@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChampsService } from '../../services/champs.service';
 import { DataChamp } from '../../models/dataChamps.interface';
 import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,10 @@ import { inject } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  
-  
   champs: DataChamp[] = new Array();
-
-  
   champsAll = inject(ChampsService);
+
+  constructor(private router:Router){}
   
   ngOnInit(): void {
     this.champsAll.loadChamps().subscribe({
@@ -32,6 +31,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  
+  goToDetail(champId: string): void {
+    this.router.navigate(['/detail', champId]);
+  }
 
 }

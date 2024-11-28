@@ -1,6 +1,9 @@
-<main>
+<main *ngIf="champion.length > 0">
   <div class="detail__img">
-    <img src="/img/e2982235-b3b8-48f9-8011-17a00f7e9267.jfif" alt="" />
+    <img
+      [src]="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/' + champion[0].id + '.png'"
+      alt="{{ champion[0].name }}"
+    />
   </div>
 
   <section class="detail__section__history">

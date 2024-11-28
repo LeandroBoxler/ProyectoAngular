@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DataChamp } from '../../models/dataChamps.interface';
 import { ChampsService } from '../../services/champs.service';
 
+
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -10,10 +13,13 @@ import { ChampsService } from '../../services/champs.service';
 export class DetailComponent implements OnInit {
   champion: DataChamp[] = [];
 
-  constructor(private serviceChamp: ChampsService) {}
+  constructor(private serviceChamp: ChampsService,private route:ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.serviceChamp.getChamp('Ahri').subscribe({
+    const champId = this.route.snapshot.paramMap.get('id');
+
+    if(champId){
+    this.serviceChamp.getChamp(champId).subscribe({
       next: (res: any) => {
         this.champion = Object.values(res['data']);
       },
@@ -24,5 +30,6 @@ export class DetailComponent implements OnInit {
         console.log(this.champion);
       },
     });
+  }
   }
 }

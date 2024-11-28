@@ -26,6 +26,7 @@ import { NgOptimizedImage } from '@angular/common';
     ReactiveFormsModule,
     NgOptimizedImage,
     HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
