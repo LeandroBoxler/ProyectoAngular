@@ -7,14 +7,16 @@ import { DataChamp } from '../models/dataChamps.interface';
 })
 export class ChampsService {
   constructor(private http: HttpClient) {}
-  champsAPI =
+  champsAllAPI =
+    'https://ddragon.leagueoflegends.com/cdn/14.23.1/data/es_AR/champion.json';
+  champAPI =
     'https://ddragon.leagueoflegends.com/cdn/14.23.1/data/es_AR/champion/';
 
   loadChamps(): Observable<DataChamp> {
-    return this.http.get<DataChamp>(this.champsAPI);
+    return this.http.get<DataChamp>(this.champsAllAPI);
   }
 
   getChamp(id: string): Observable<DataChamp> {
-    return this.http.get<DataChamp>(`${this.champsAPI}${id}.json`);
+    return this.http.get<DataChamp>(`${this.champAPI}${id}.json`);
   }
 }

@@ -13,7 +13,7 @@ export class DetailComponent implements OnInit {
   constructor(private serviceChamp: ChampsService) {}
 
   ngOnInit(): void {
-    this.serviceChamp.getChamp('').subscribe({
+    this.serviceChamp.getChamp('Ahri').subscribe({
       next: (res: any) => {
         this.champion = Object.values(res['data']);
       },
