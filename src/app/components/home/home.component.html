@@ -5,17 +5,18 @@
       <option value="">Nombre</option>
       <option value="">Mana</option>
       <option value="">Energia</option>
-
     </select>
   </div>
   <div id="content">
     <div id="champs" *ngFor="let champ of champs; let i = index">
       <div>
         <img
-        src="https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/{{champ.id}}.png"
-        alt=""
+          src="https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/{{
+            champ.id
+          }}.png"
+          alt=""
         />
-        <span>{{ champ.id }}</span>
+        <span>{{ champ.name }}</span>
       </div>
     </div>
   </div>

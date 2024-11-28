@@ -1,18 +1,16 @@
 <main>
-    <div class="detail__img">
-        <img src="/img/e2982235-b3b8-48f9-8011-17a00f7e9267.jfif" alt="">
-    </div>
-    
-    <section class="detail__section__history">
-        <h1 class="detail__nameChamp">AATROX</h1>
+  <div class="detail__img">
+    <img src="/img/e2982235-b3b8-48f9-8011-17a00f7e9267.jfif" alt="" />
+  </div>
 
-        <div class="detail__section__div__history">
-        <h4 class="detail__section__div__title" [ngStyle]="{'color':'black'}">Historia</h4>
-        <p class="detail__section__div__text">Ya sea que la confundan con un demonio o con un dios
-            , son varios los relatos que se cuentan sobre la 
-            Espada Darkin... pero pocos conocen su verdadero nombre, o la historia de su caída.
-            En la antigüedad, mucho antes de que las arenas de los desiertos se tragaran al imperio, un poderoso campeón de Shurima fue presentado frente al Disco Solar para convertirse en el avatar de un ideal celestial ahora olvidado. Reconstruido como uno de los Ascendidos, sus alas eran la luz dorada del amanecer y su armadura brillaba como una constelación de esperanza desde más allá del gran
-        </p>    
-        </div>
-    </section>
+  <section class="detail__section__history">
+    <h1 class="detail__nameChamp">{{ champion[0].name }}</h1>
+
+    <div class="detail__section__div__history">
+      <h4 class="detail__section__div__title" [ngStyle]="{ color: 'black' }">
+        Historia
+      </h4>
+      <p class="detail__section__div__text">{{ champion[0].lore }}</p>
+    </div>
+  </section>
 </main>

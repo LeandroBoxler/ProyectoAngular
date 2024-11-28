@@ -8,9 +8,13 @@ import { DataChamp } from '../models/dataChamps.interface';
 export class ChampsService {
   constructor(private http: HttpClient) {}
   champsAPI =
-    'https://ddragon.leagueoflegends.com/cdn/14.23.1/data/es_AR/champion.json';
+    'https://ddragon.leagueoflegends.com/cdn/14.23.1/data/es_AR/champion/';
 
   loadChamps(): Observable<DataChamp> {
     return this.http.get<DataChamp>(this.champsAPI);
+  }
+
+  getChamp(id: string): Observable<DataChamp> {
+    return this.http.get<DataChamp>(`${this.champsAPI}${id}.json`);
   }
 }
