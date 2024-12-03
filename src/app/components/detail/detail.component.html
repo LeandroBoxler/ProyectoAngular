@@ -1,19 +1,50 @@
-<main *ngIf="champion.length > 0">
-  <div class="detail__img">
-    <img
-      [src]="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/' + champion[0].id + '.png'"
-      alt="{{ champion[0].name }}"
-    />
-  </div>
-
+<main [ngStyle]="{ background: backgroundStyle }">
   <section class="detail__section__history">
-    <h1 class="detail__nameChamp">{{ champion[0].name }}</h1>
-
+    <div class="CARRUSEL">
+      <div class="detail__img">
+        <img style="cursor: pointer" (click)="obtenerIdConVariable(img.src)"
+        *ngFor="let champ of champion.skins; let i = index" #img id="hola"
+        id="{{ champ.num }}"
+        src="https://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{
+          champion.id
+        }}_{{ champ.num }}.jpg" alt= />
+      </div>
+    </div>
     <div class="detail__section__div__history">
-      <h4 class="detail__section__div__title" [ngStyle]="{ color: 'black' }">
-        Historia
-      </h4>
-      <p class="detail__section__div__text">{{ champion[0].lore }}</p>
+      <h1 class="detail__nameChamp">{{ champion.name.toLocaleUpperCase() }}</h1>
+      <h4 class="detail__section__div__title">Historia</h4>
+      <p class="detail__section__div__text">
+        {{ champion.lore }}
+      </p>
     </div>
   </section>
+  <section class="detail__section__spells">
+    <div class="detail__spells">
+      <img
+        (click)="miFuncion('passive')"
+        [class.active]="activeButtonId === 'passive'"
+        src="{{ passiva }}"
+      />
+      <p
+        class="detail__spell__description"
+        *ngIf="activeButtonId === 'passive'"
+      >
+        {{ champion.passive.description }}
+      </p>
+    </div>
+    <div class="detail__spells" *ngFor="let skill of skills; let i = index">
+      <img
+        (click)="miFuncion('button-' + i)"
+        [class.active]="activeButtonId === 'button-' + i"
+        src="{{ skill }}"
+      />
+      <p
+        class="detail__spell__description"
+        *ngIf="activeButtonId === 'button-' + i"
+      >
+        {{ champion.spells[i].description }}
+      </p>
+    </div>
+  </section>
+  <section></section>
 </main>

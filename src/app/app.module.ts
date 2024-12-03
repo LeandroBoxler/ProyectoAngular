@@ -10,14 +10,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgOptimizedImage } from '@angular/common';
+import { ChangebodyDirective } from './directives/changebody.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     DetailComponent,
+
     HomeComponent,
     FooterComponent,
     HeaderComponent,
+    ChangebodyDirective,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,6 @@ import { NgOptimizedImage } from '@angular/common';
     ReactiveFormsModule,
     NgOptimizedImage,
     HttpClientModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent],
