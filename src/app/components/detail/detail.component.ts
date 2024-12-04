@@ -18,6 +18,11 @@ export class DetailComponent implements OnInit {
   skills!: any;
   champId: any;
   idImg!: string;
+  stats = [
+    { name: 'Fuerza', value: 70 }, // 70% de altura
+    { name: 'Agilidad', value: 50 }, // 50% de altura
+    { name: 'Inteligencia', value: 90 }, // 90% de altura
+  ];
 
   activeButtonId: string | null = null;
 
@@ -33,20 +38,19 @@ export class DetailComponent implements OnInit {
         this.champion = result;
         this.skills = this.iconsSkills.skillsImg(this.champion);
         this.passiva = this.iconsSkills.passiveImg(this.champion);
+        console.log(this.champion.stats);
       });
     }
   }
   miFuncion(imgId: string) {
     this.activeButtonId = this.activeButtonId === imgId ? null : imgId;
   }
-  mainbackground(a: boolean) {
-    this.cambioDeFondo = !this.cambioDeFondo;
-  }
+
   obtenerIdConVariable(id: string): void {
     this.idImg = id;
     console.log('ID de la imagen:', id);
   }
   get backgroundStyle(): string {
-    return this.idImg ? `url(${this.idImg})` : 'blue';
+    return this.idImg ? `url(${this.idImg})` : 'black';
   }
 }

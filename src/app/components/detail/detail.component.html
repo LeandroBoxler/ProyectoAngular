@@ -46,5 +46,53 @@
       </p>
     </div>
   </section>
-  <section></section>
+  <section class="detail__section__stats">
+    <div class="detail__div__stats">
+      <img src="/img/heart.webp" alt="" />
+      <p class="detail__stats">hp {{ champion.stats["hp"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/speed.webp" alt="" />
+      <p class="detail__stats">movespeed {{ champion.stats["movespeed"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/armor.webp" alt="" />
+      <p class="detail__stats">armor {{ champion.stats["armor"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/magicresist.webp" alt="" />
+      <p class="detail__stats">spellblock {{ champion.stats["spellblock"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/rangeAtak.png" alt="" />
+      <p class="detail__stats">
+        attackrange {{ champion.stats["attackrange"] }}
+      </p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/healRegen.webp" alt="" />
+      <p class="detail__stats">hpregen {{ champion.stats["hpregen"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/crit.png" alt="" />
+      <p class="detail__stats">crit {{ champion.stats["crit"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/atk.webp" alt="" />
+      <p class="detail__stats">
+        attackdamage {{ champion.stats["attackdamage"] }}
+      </p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/atkspeed.webp" alt="" />
+      <p class="detail__stats">
+        attackspeed {{ champion.stats["attackspeed"] }}
+      </p>
+    </div>
+  </section>
+  <div class="column__stats">
+    <div *ngFor="let stats of stats">
+      <span class="stat-label">{{ stats.name }}</span>
+    </div>
+  </div>
 </main>

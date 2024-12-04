@@ -60,3 +60,80 @@ main {
     }
   }
 }
+.detail__section__stats {
+  background-color: gray;
+  justify-content: space-between;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 10%;
+  height: 400px;
+  padding: 3%;
+  .detail__div__stats {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    img {
+      width: 15%;
+    }
+
+    .detail__stats {
+      width: 40%;
+      font-weight: bold;
+    }
+  }
+}
+
+.column__stats {
+  height: 200px;
+  width: 300px;
+  background-color: #f9f9f9;
+  justify-content: space-between;
+  div {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background-color: #45a049;
+    align-items: end;
+  }
+  div:hover {
+    background-color: #45a049;
+  }
+  span {
+    font-size: 12px;
+    text-align: center;
+    width: 10%;
+  }
+}
+// .stat-column {
+//   display: flex;
+//   align-items: flex-end;
+//   justify-content: space-between;
+//   gap: 10px;
+//   height: 200px; /* Altura total del gráfico */
+//   width: 300px; /* Ancho total del gráfico */
+//   border: 1px solid #ccc;
+//   padding: 10px;
+//   background-color: #f9f9f9;
+// }
+
+// .stat-bar {
+//   width: 30px;
+//   background-color: #4caf50;
+//   position: relative;
+//   transition: height 0.3s ease, background-color 0.3s ease;
+//   cursor: pointer;
+// }
+
+// .stat-bar:hover {
+//   background-color: #45a049;
+// }
+
+// .stat-label {
+//   position: absolute;
+//   bottom: -20px; /* Debajo de la barra */
+//   font-size: 12px;
+//   text-align: center;
+//   width: 100%;
+// }
