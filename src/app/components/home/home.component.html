@@ -1,17 +1,14 @@
 <main>
   <div id="filter">
     <p>Ordenar por</p>
-    <select name="" id="">
-      <option value="">Nombre</option>
-      <option value="">Mana</option>
-      <option value="">Energia</option>
+    <select [(ngModel)]="champsService.typeChamps">
+      <option *ngFor="let type of typeChamps" [value]="type">{{type}}</option>
     </select>
   </div>
   <div id="content">
     <div
       id="champs"
-      *ngFor="let champ of champsService.filteredChamps; let i = index"
-    >
+      *ngFor="let champ of (champsService.filteredChampsType || champsService.filteredChamps)">
       <div (click)="goToDetail(champ.id)">
         <img
           src="https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/{{
@@ -19,7 +16,7 @@
           }}.png"
           alt=""
         />
-        <span>{{ champ.name }}</span>
+        <span>{{ champ.name}}</span>
       </div>
     </div>
   </div>

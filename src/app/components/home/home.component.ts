@@ -9,12 +9,18 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   champsService = inject(ChampsService);
+  typeChamps:string[]=["Fighter","Assassin","Tank","Support","Mage","Marksman"]
 
   constructor(private router: Router) {}
+
+  ngOnInit(): void {
+  }
+  
 
   goToDetail(champId: string): void {
     this.router.navigate(['/detail', champId]);
   }
+
 }

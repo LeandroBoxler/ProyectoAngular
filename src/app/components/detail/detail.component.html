@@ -1,16 +1,18 @@
-<main [ngStyle]="{ background: backgroundStyle }">
-  <section class="detail__section__history">
+  <section  class="detail__section__history">
     <div class="CARRUSEL">
       <div class="detail__img">
-        <img style="cursor: pointer" (click)="obtenerIdConVariable(img.src)"
-        *ngFor="let champ of champion.skins; let i = index" #img id="hola"
-        id="{{ champ.num }}"
-        src="https://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{
+        <img style="cursor: pointer" (click)="obtenerIdConVariable(champion.id,champ.num.toString())"
+        *ngFor="let champ of champion.skins; let i = index" 
+        [id]="champion.id"
+        [src]="'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/'+
           champion.id
-        }}_{{ champ.num }}.jpg" alt= />
+        +'_'+ champ.num +'.jpg'"
+        alt=""
+        [name]="champ.num"  />
       </div>
     </div>
-    <div class="detail__section__div__history">
+    
+    <div  class="detail__section__div__history">
       <h1 class="detail__nameChamp">{{ champion.name.toLocaleUpperCase() }}</h1>
       <h4 class="detail__section__div__title">Historia</h4>
       <p class="detail__section__div__text">
@@ -18,6 +20,8 @@
       </p>
     </div>
   </section>
+  <main style="background-image:url('{{backgroundStyle}}')">
+
   <section class="detail__section__spells">
     <div class="detail__spells">
       <img
@@ -90,9 +94,21 @@
       </p>
     </div>
   </section>
+
+
+
   <div class="column__stats">
-    <div *ngFor="let stats of stats">
-      <span class="stat-label">{{ stats.name }}</span>
-    </div>
+      <div [ngStyle]="{'height': champion.info.attack + '0%'}"class="div__stats">
+      <span class="name__stats">ataque</span>
+</div>
+<div [ngStyle]="{'height': champion.info.magic + '0%'}"class="div__stats">
+  <span class="name__stats">magia</span>
+</div>
+<div [ngStyle]="{'height': champion.info.defense + '0%'}"class="div__stats">
+  <span class="name__stats">defensa</span>
+</div>
+<div [ngStyle]="{'height': champion.info.difficulty + '0%'}"class="div__stats">
+  <span class="name__stats">dificultad</span>
+</div>
   </div>
 </main>

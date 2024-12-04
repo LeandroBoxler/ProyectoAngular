@@ -8,6 +8,7 @@ import { Champ } from '../models/modelsChamp.interface';
 })
 export class ChampsService {
   champs!: DataChamp[];
+  typeChamps!:string
   search: string = '';
   private version = '14.23.1';
   constructor(private http: HttpClient) {
@@ -31,6 +32,14 @@ export class ChampsService {
     const pattern = new RegExp(`(${this.search})`, 'i');
     return this.champs.filter((e) => pattern.test(e.name));
   }
+
+  
+  get filteredChampsType(): DataChamp[] {
+    if (!this.typeChamps) return this.champs; 
+    return this.champs.filter((e) => Array.isArray(e.tags) && e.tags.includes(this.typeChamps));
+  }
+
+
 
   getChamp(championId: string): Observable<Champ> {
     const url = `https://ddragon.leagueoflegends.com/cdn/${this.version}/data/es_AR/champion/${championId}.json`;
