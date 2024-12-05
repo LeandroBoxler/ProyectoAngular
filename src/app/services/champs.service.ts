@@ -27,18 +27,56 @@ export class ChampsService {
       });
   }
 
-  //TRAE DATOS DE CAMPEONES FILTRADOS POR ID
-  get filteredChamps(): DataChamp[] {
-    const pattern = new RegExp(`(${this.search})`, 'i');
-    return this.champs.filter((e) => pattern.test(e.name));
-  }
+  //CODIGO QUE TERMINE NO USANDO
+  // get filteredChamps(): DataChamp[] {
+   
+  //   const pattern = new RegExp(`(${this.search})`, 'i');
+  //   return this.champs.filter((e) => pattern.test(e.name));
+  // }
 
   
-  get filteredChampsType(): DataChamp[] {
-    if (!this.typeChamps) return this.champs; 
-    return this.champs.filter((e) => Array.isArray(e.tags) && e.tags.includes(this.typeChamps));
+  // get filteredChampsType(): DataChamp[] {
+    
+  //   if (!this.typeChamps) return this.champs; 
+  //   return this.champs.filter((e) => Array.isArray(e.tags) && e.tags.includes(this.typeChamps));
+  // }
+
+  SeachChange(value: string) {
+    this.search = value;
+    if (this.search) {
+      this.typeChamps = "";  
+    }
   }
 
+  TypeChampChange(value: string) {
+    this.typeChamps = value;
+    if (this.typeChamps) {
+      this.search = ""
+    }
+  }
+
+
+
+
+
+
+  get filterChampsHome(): DataChamp[] {
+
+    let filtered = this.champs;
+
+    if (this.search) {
+      const pattern = new RegExp(`(${this.search})`, 'i');
+      filtered = filtered.filter((champ) => pattern.test(champ.name));
+    }
+
+    if (this.typeChamps) {
+      filtered = filtered.filter((champ) =>
+        Array.isArray(champ.tags) && champ.tags.includes(this.typeChamps)
+      );
+    }
+
+    return filtered;
+  }
 
 
   getChamp(championId: string): Observable<Champ> {

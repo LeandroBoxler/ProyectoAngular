@@ -1,14 +1,14 @@
 <main>
   <div id="filter">
     <p>Ordenar por</p>
-    <select [(ngModel)]="champsService.typeChamps">
+    <select [(ngModel)]="champsService.typeChamps" (ngModelChange)="champsService.TypeChampChange($event)" >
       <option *ngFor="let type of typeChamps" [value]="type">{{type}}</option>
     </select>
   </div>
   <div id="content">
     <div
       id="champs"
-      *ngFor="let champ of (champsService.filteredChampsType || champsService.filteredChamps)">
+      *ngFor="let champ of champsService.filterChampsHome">
       <div (click)="goToDetail(champ.id)">
         <img
           src="https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/{{

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit{
   champsService = inject(ChampsService);
-  typeChamps:string[]=["Fighter","Assassin","Tank","Support","Mage","Marksman"]
+  typeChamps:string[]=["","Fighter","Assassin","Tank","Support","Mage","Marksman"]
 
   constructor(private router: Router) {}
 

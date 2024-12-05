@@ -25,6 +25,7 @@
   <section class="detail__section__spells">
     <div class="detail__spells">
       <img
+        [ngStyle]="{'border':'black 1px solid'}"
         (click)="miFuncion('passive')"
         [class.active]="activeButtonId === 'passive'"
         src="{{ passiva }}"

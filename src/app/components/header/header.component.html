@@ -4,5 +4,6 @@
     type="search"
     placeholder="Buscar"
     [(ngModel)]="champsService.search"
+    (ngModelChange)="champsService.SeachChange($event)"
   />
 </header>
