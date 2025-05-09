@@ -1,0 +1,9 @@
+<header>
+  <a href="/"><img src="img/lollogo.png" alt="lol" /></a>
+  <input
+    type="search"
+    placeholder="Buscar"
+    [(ngModel)]="champsService.search"
+    (ngModelChange)="champsService.SeachChange($event)"
+  />
+</header>

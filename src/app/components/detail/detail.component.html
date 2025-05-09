@@ -1,0 +1,115 @@
+  <section  class="detail__section__history">
+    <div class="CARRUSEL">
+      <div class="detail__img">
+        <img style="cursor: pointer" (click)="obtenerIdConVariable(champion.id,champ.num.toString())"
+        *ngFor="let champ of champion.skins; let i = index" 
+        [id]="champion.id"
+        [src]="'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/'+
+          champion.id
+        +'_'+ champ.num +'.jpg'"
+        alt=""
+        [name]="champ.num"  />
+      </div>
+    </div>
+    
+    <div  class="detail__section__div__history">
+      <h1 class="detail__nameChamp">{{ champion.name.toLocaleUpperCase() }}</h1>
+      <h4 class="detail__section__div__title">Historia</h4>
+      <p class="detail__section__div__text">
+        {{ champion.lore }}
+      </p>
+    </div>
+  </section>
+  <main style="background-image:url('{{backgroundStyle}}')">
+
+  <section class="detail__section__spells">
+    <div class="detail__spells">
+      <img
+        [ngStyle]="{'border':'black 1px solid'}"
+        (click)="miFuncion('passive')"
+        [class.active]="activeButtonId === 'passive'"
+        src="{{ passiva }}"
+      />
+      <p
+        class="detail__spell__description"
+        *ngIf="activeButtonId === 'passive'"
+      >
+        {{ champion.passive.description }}
+      </p>
+    </div>
+    <div class="detail__spells" *ngFor="let skill of skills; let i = index">
+      <img
+        (click)="miFuncion('button-' + i)"
+        [class.active]="activeButtonId === 'button-' + i"
+        src="{{ skill }}"
+      />
+      <p
+        class="detail__spell__description"
+        *ngIf="activeButtonId === 'button-' + i"
+      >
+        {{ champion.spells[i].description }}
+      </p>
+    </div>
+  </section>
+  <section class="detail__section__stats">
+    <div class="detail__div__stats">
+      <img src="/img/heart.webp" alt="" />
+      <p class="detail__stats">hp {{ champion.stats["hp"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/speed.webp" alt="" />
+      <p class="detail__stats">movespeed {{ champion.stats["movespeed"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/armor.webp" alt="" />
+      <p class="detail__stats">armor {{ champion.stats["armor"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/magicresist.webp" alt="" />
+      <p class="detail__stats">spellblock {{ champion.stats["spellblock"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/rangeAtak.png" alt="" />
+      <p class="detail__stats">
+        attackrange {{ champion.stats["attackrange"] }}
+      </p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/healRegen.webp" alt="" />
+      <p class="detail__stats">hpregen {{ champion.stats["hpregen"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/crit.png" alt="" />
+      <p class="detail__stats">crit {{ champion.stats["crit"] }}</p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/atk.webp" alt="" />
+      <p class="detail__stats">
+        attackdamage {{ champion.stats["attackdamage"] }}
+      </p>
+    </div>
+    <div class="detail__div__stats">
+      <img src="/img/atkspeed.webp" alt="" />
+      <p class="detail__stats">
+        attackspeed {{ champion.stats["attackspeed"] }}
+      </p>
+    </div>
+  </section>
+
+
+
+  <div class="column__stats">
+      <div [ngStyle]="{'height': champion.info.attack + '0%'}"class="div__stats">
+      <span class="name__stats">ataque</span>
+</div>
+<div [ngStyle]="{'height': champion.info.magic + '0%'}"class="div__stats">
+  <span class="name__stats">magia</span>
+</div>
+<div [ngStyle]="{'height': champion.info.defense + '0%'}"class="div__stats">
+  <span class="name__stats">defensa</span>
+</div>
+<div [ngStyle]="{'height': champion.info.difficulty + '0%'}"class="div__stats">
+  <span class="name__stats">dificultad</span>
+</div>
+  </div>
+</main>
