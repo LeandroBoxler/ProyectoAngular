@@ -1,115 +1,117 @@
-  <section  class="detail__section__history">
-    <div class="CARRUSEL">
-      <div class="detail__img">
-        <img style="cursor: pointer" (click)="obtenerIdConVariable(champion.id,champ.num.toString())"
-        *ngFor="let champ of champion.skins; let i = index" 
-        [id]="champion.id"
-        [src]="'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/'+
-          champion.id
-        +'_'+ champ.num +'.jpg'"
-        alt=""
-        [name]="champ.num"  />
-      </div>
+<main class="champion-detail-page" [ngStyle]="{'background-image': 'url(' + backgroundImage + ')'}">
+  <section class="skins-section">
+    <div class="skins-container">
+      <img
+        *ngFor="let champ of champion.skins"
+        [src]="'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + champion.id + '_' + champ.num + '.jpg'"
+        [alt]="'Skin de ' + champion.name + ' ' + champ.num"
+        class="skin-image"
+        [class.selected]="selectedSkin === champ.num"
+        (click)="selectSkin(champ.num)"
+      />
     </div>
-    
-    <div  class="detail__section__div__history">
-      <h1 class="detail__nameChamp">{{ champion.name.toLocaleUpperCase() }}</h1>
-      <h4 class="detail__section__div__title">Historia</h4>
-      <p class="detail__section__div__text">
+  </section>
+
+  <section class="detail-section-history">
+    <div class="detail-history-content">
+      <h1 class="detail-champion-name">{{ champion.name | uppercase }}</h1>
+      <h4 class="detail-section-title">Historia</h4>
+      <p class="detail-section-text">
         {{ champion.lore }}
       </p>
     </div>
   </section>
-  <main style="background-image:url('{{backgroundStyle}}')">
 
-  <section class="detail__section__spells">
-    <div class="detail__spells">
-      <img
-        [ngStyle]="{'border':'black 1px solid'}"
-        (click)="miFuncion('passive')"
-        [class.active]="activeButtonId === 'passive'"
-        src="{{ passiva }}"
-      />
-      <p
-        class="detail__spell__description"
-        *ngIf="activeButtonId === 'passive'"
-      >
-        {{ champion.passive.description }}
-      </p>
-    </div>
-    <div class="detail__spells" *ngFor="let skill of skills; let i = index">
-      <img
-        (click)="miFuncion('button-' + i)"
-        [class.active]="activeButtonId === 'button-' + i"
-        src="{{ skill }}"
-      />
-      <p
-        class="detail__spell__description"
-        *ngIf="activeButtonId === 'button-' + i"
-      >
-        {{ champion.spells[i].description }}
-      </p>
-    </div>
-  </section>
-  <section class="detail__section__stats">
-    <div class="detail__div__stats">
-      <img src="/img/heart.webp" alt="" />
-      <p class="detail__stats">hp {{ champion.stats["hp"] }}</p>
-    </div>
-    <div class="detail__div__stats">
-      <img src="/img/speed.webp" alt="" />
-      <p class="detail__stats">movespeed {{ champion.stats["movespeed"] }}</p>
-    </div>
-    <div class="detail__div__stats">
-      <img src="/img/armor.webp" alt="" />
-      <p class="detail__stats">armor {{ champion.stats["armor"] }}</p>
-    </div>
-    <div class="detail__div__stats">
-      <img src="/img/magicresist.webp" alt="" />
-      <p class="detail__stats">spellblock {{ champion.stats["spellblock"] }}</p>
-    </div>
-    <div class="detail__div__stats">
-      <img src="/img/rangeAtak.png" alt="" />
-      <p class="detail__stats">
-        attackrange {{ champion.stats["attackrange"] }}
-      </p>
-    </div>
-    <div class="detail__div__stats">
-      <img src="/img/healRegen.webp" alt="" />
-      <p class="detail__stats">hpregen {{ champion.stats["hpregen"] }}</p>
-    </div>
-    <div class="detail__div__stats">
-      <img src="/img/crit.png" alt="" />
-      <p class="detail__stats">crit {{ champion.stats["crit"] }}</p>
-    </div>
-    <div class="detail__div__stats">
-      <img src="/img/atk.webp" alt="" />
-      <p class="detail__stats">
-        attackdamage {{ champion.stats["attackdamage"] }}
-      </p>
-    </div>
-    <div class="detail__div__stats">
-      <img src="/img/atkspeed.webp" alt="" />
-      <p class="detail__stats">
-        attackspeed {{ champion.stats["attackspeed"] }}
-      </p>
+  <section class="detail-section-spells">
+    <h2 class="section-heading">Habilidades</h2>
+    <div class="spells-grid">
+      <div class="spell-item">
+        <img
+          [class.active]="activeButtonId === 'passive'"
+          [src]="passiva"
+          alt="Habilidad Pasiva"
+          (click)="miFuncion('passive')"
+        />
+        <p class="spell-description" *ngIf="activeButtonId === 'passive'">
+          {{ champion.passive.description }}
+        </p>
+      </div>
+
+      <div class="spell-item" *ngFor="let skill of skills; let i = index">
+        <img
+          [class.active]="activeButtonId === 'button-' + i"
+          [src]="skill"
+          [alt]="'Habilidad ' + (i + 1)"
+          (click)="miFuncion('button-' + i)"
+        />
+        <p class="spell-description" *ngIf="activeButtonId === 'button-' + i">
+          {{ champion.spells[i].description }}
+        </p>
+      </div>
     </div>
   </section>
 
+  <section class="detail-section-stats">
+    <h2 class="section-heading">Estadísticas Detalladas</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <img src="/img/heart.webp" alt="Icono de Vida" />
+        <p>HP: {{ champion.stats["hp"] }}</p>
+      </div>
+      <div class="stat-item">
+        <img src="/img/speed.webp" alt="Icono de Velocidad de Movimiento" />
+        <p>Velocidad de Movimiento: {{ champion.stats["movespeed"] }}</p>
+      </div>
+      <div class="stat-item">
+        <img src="/img/armor.webp" alt="Icono de Armadura" />
+        <p>Armadura: {{ champion.stats["armor"] }}</p>
+      </div>
+      <div class="stat-item">
+        <img src="/img/magicresist.webp" alt="Icono de Resistencia Mágica" />
+        <p>Resistencia Mágica: {{ champion.stats["spellblock"] }}</p>
+      </div>
+      <div class="stat-item">
+        <img src="/img/rangeAtak.png" alt="Icono de Rango de Ataque" />
+        <p>Rango de Ataque: {{ champion.stats["attackrange"] }}</p>
+      </div>
+      <div class="stat-item">
+        <img src="/img/healRegen.webp" alt="Icono de Regeneración de HP" />
+        <p>Regen. HP: {{ champion.stats["hpregen"] }}</p>
+      </div>
+      <div class="stat-item">
+        <img src="/img/crit.png" alt="Icono de Crítico" />
+        <p>Crítico: {{ champion.stats["crit"] }}</p>
+      </div>
+      <div class="stat-item">
+        <img src="/img/atk.webp" alt="Icono de Daño de Ataque" />
+        <p>Daño de Ataque: {{ champion.stats["attackdamage"] }}</p>
+      </div>
+      <div class="stat-item">
+        <img src="/img/atkspeed.webp" alt="Icono de Velocidad de Ataque" />
+        <p>Velocidad de Ataque: {{ champion.stats["attackspeed"] }}</p>
+      </div>
+    </div>
+  </section>
 
-
-  <div class="column__stats">
-      <div [ngStyle]="{'height': champion.info.attack + '0%'}"class="div__stats">
-      <span class="name__stats">ataque</span>
-</div>
-<div [ngStyle]="{'height': champion.info.magic + '0%'}"class="div__stats">
-  <span class="name__stats">magia</span>
-</div>
-<div [ngStyle]="{'height': champion.info.defense + '0%'}"class="div__stats">
-  <span class="name__stats">defensa</span>
-</div>
-<div [ngStyle]="{'height': champion.info.difficulty + '0%'}"class="div__stats">
-  <span class="name__stats">dificultad</span>
-</div>
-  </div>
+  <section class="column-stats-section">
+    <h2 class="section-heading">Atributos Principales</h2>
+    <div class="column-stats-chart">
+      <div class="stat-bar-wrapper">
+        <div class="stat-bar" [ngStyle]="{'height': champion.info.attack * 10 + '%'}"></div>
+        <span class="stat-label">Ataque</span>
+      </div>
+      <div class="stat-bar-wrapper">
+        <div class="stat-bar" [ngStyle]="{'height': champion.info.magic * 10 + '%'}"></div>
+        <span class="stat-label">Magia</span>
+      </div>
+      <div class="stat-bar-wrapper">
+        <div class="stat-bar" [ngStyle]="{'height': champion.info.defense * 10 + '%'}"></div>
+        <span class="stat-label">Defensa</span>
+      </div>
+      <div class="stat-bar-wrapper">
+        <div class="stat-bar" [ngStyle]="{'height': champion.info.difficulty * 10 + '%'}"></div>
+        <span class="stat-label">Dificultad</span>
+      </div>
+    </div>
+  </section>
 </main>

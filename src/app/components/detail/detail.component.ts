@@ -1,58 +1,56 @@
 import { Component, OnInit } from '@angular/core';
 import { ChampsService } from '../../services/champs.service';
 import { ActivatedRoute } from '@angular/router';
-import { Champ } from '../../models/modelsChamp.interface';
-import { IconsChamps } from '../../services/iconsChamps.service';
+import { Champ } from '../../models/modelsChamp.interface'; 
+import { IconsChamps } from '../../services/iconsChamps.service'; 
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrl: './detail.component.scss',
+  styleUrl: './detail.component.scss', 
 })
 export class DetailComponent implements OnInit {
-  cambioDeFondo: boolean = true;
   champion!: Champ;
-  viewPassiveChamp!: string;
-  passiva!: string;
-  skills!: any;
-  champId: any;
-  idImg!: string;
-  idNameImage!:string
+  passiva!: string; 
+  skills!: string[];  
 
+  backgroundImage: string = ''; 
+  selectedSkin: number = 0; 
 
   activeButtonId: string | null = null;
 
   constructor(
     private serviceChamp: ChampsService,
     private route: ActivatedRoute,
-    private iconsSkills: IconsChamps
+    private iconsSkills: IconsChamps 
   ) {}
+
   ngOnInit(): void {
-    const champId = this.route.snapshot.paramMap.get('id');
+    const champId = this.route.snapshot.paramMap.get('id'); 
     if (champId) {
       this.serviceChamp.getChamp(champId).subscribe((result) => {
-        this.champion = result;
-        this.skills = this.iconsSkills.skillsImg(this.champion);
+        this.champion = result; 
+
+        if (this.champion.skins && this.champion.skins.length > 0) {
+          this.selectSkin(this.champion.skins[0].num);
+        } else {
+          this.backgroundImage = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${this.champion.id}_0.jpg`;
+          this.selectedSkin = 0; 
+        }
+
         this.passiva = this.iconsSkills.passiveImg(this.champion);
+        this.skills = this.iconsSkills.skillsImg(this.champion);
       });
     }
   }
-  miFuncion(imgId: string) {
+
+
+  selectSkin(skinNum: number): void {
+    this.selectedSkin = skinNum; 
+    this.backgroundImage = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${this.champion.id}_${skinNum}.jpg`;
+  }
+
+  miFuncion(imgId: string): void {
     this.activeButtonId = this.activeButtonId === imgId ? null : imgId;
   }
-
-  obtenerIdConVariable(id: string,name:string): void {
-    this.idImg = id;
-    this.idNameImage= name
-  }
-  get backgroundStyle(): string {
-
-    return (this.idImg && this.idNameImage) 
-    
-    ? `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${this.idImg}_${this.idNameImage}.jpg`
-     
-    :`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${this.idImg}_${this.idNameImage}.jpg`
-  }
-
-  
 }
